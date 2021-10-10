@@ -4,19 +4,33 @@ let sum = firstCard + secondCard
 let hasBlackJack = false
 let isAlive = true
 let message = ""
+let messageEl = document.getElementById("message-el")
+let emojiEl = document.getElementById("emoji-el")
+let sumEl = document.querySelector("#sum-el")
+let cardsEl = document.querySelector("#cards-el")
 // console.log(sum)
 
-if (sum <= 20) {
-    message = "Do you want to draw a new card? 😊"
-} else if (sum === 21) {
-    message = "Yay! You've got Blackjack! 🥳"
-    hasBlackJack = true
-} else {
-    message = "You're out of the game! 😭"
-    isAlive = false
-}
+function startGame() {
+    sumEl.textContent = "Sum: " + sum
+    cardsEl.textContent = "Cards: " + firstCard + " " + secondCard
 
-console.log(message)
+    if (sum <= 20) {
+        message = "Do you want to draw a new card?"
+        emoji = "😊"
+    } else if (sum === 21) {
+        message = "Yay! You've got Blackjack!"
+        emoji = "🥳"
+        hasBlackJack = true
+    } else {
+        message = "You're out of the game!"
+        emoji = "😭"
+        isAlive = false
+    }
+
+    messageEl.textContent = message
+    emojiEl.textContent = emoji
+
+}
 
 // let age = 22
 
