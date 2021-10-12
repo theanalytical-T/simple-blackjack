@@ -39,9 +39,20 @@ button {
     border: none;
     border-radius: 3px;
     font-weight: bold;
+    margin-top: 1rem;
+
+    // &:active {
+
+    // }
 
     &:hover {
         color: white;
         cursor: pointer;
     }
+}
+
+#newCard {
+    margin-top: 15px;
+    padding: 1rem 3.75rem;
+    // display: none;
 }

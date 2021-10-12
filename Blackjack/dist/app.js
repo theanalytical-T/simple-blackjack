@@ -11,6 +11,10 @@ let cardsEl = document.querySelector("#cards-el")
 // console.log(sum)
 
 function startGame() {
+    renderGame()
+}
+
+function renderGame() {
     sumEl.textContent = "Sum: " + sum
     cardsEl.textContent = "Cards: " + firstCard + " " + secondCard
 
@@ -30,6 +34,14 @@ function startGame() {
     messageEl.textContent = message
     emojiEl.textContent = emoji
 
+}
+
+function newCard() {
+    console.log("Drawing a new card from the deck!")
+    // cardsEl.textContent = "Cards: " + firstCard + " " + secondCard + " " + card
+    let card = 3
+    sum += card
+    renderGame()
 }
 
 // let age = 22
