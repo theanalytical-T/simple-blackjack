@@ -1,5 +1,7 @@
-let firstCard = 5
-let secondCard = 11
+//cntrl+d to write repetitive code in multiple spots
+
+let firstCard = getRandomCard()
+let secondCard = getRandomCard()
 let sum = firstCard + secondCard
 let hasBlackJack = false
 let isAlive = true
@@ -10,15 +12,21 @@ let sumEl = document.querySelector("#sum-el")
 let cardsEl = document.querySelector("#cards-el")
 let cards = [firstCard, secondCard] //array - an ordered list of items
 
-// console.log(sum)
+function getRandomCard() {
+    return Math.random() * 21
+}
 
 function startGame() {
     renderGame()
 }
 
 function renderGame() {
+    cardsEl.textContent = "Cards: "
+    for (let i = 0; i < cards.length; i++) {
+        cardsEl.textContent += cards[i] + " "
+    }
+
     sumEl.textContent = "Sum: " + sum
-    cardsEl.textContent = "Cards: " + cards[0] + " " + cards[1]
 
     if (sum <= 20) {
         message = "Do you want to draw a new card?"
@@ -39,12 +47,15 @@ function renderGame() {
 }
 
 function newCard() {
-    console.log("Drawing a new card from the deck!")
-    // cardsEl.textContent = "Cards: " + firstCard + " " + secondCard + " " + card
-    let card = 3
+    let card = getRandomCard()
     sum += card
+    cards.push(card)
     renderGame()
 }
+
+// let cards = [7, 4]
+// cards.push(6) //the .push allows js to "push" items onto the array attached
+// console.log cards // 7, 4, 6
 
 // let age = 22
 
@@ -64,36 +75,50 @@ function newCard() {
 //     console.log("Not eligible, you have already gotten one.")
 // }
 
-let featuredPost = [
-    "Check out my Netflix clone",
-    "Here's the code for my project",
-    "I've just relaunched my portfolio"
-]
+// let featuredPost = [
+//     "Check out my Netflix clone",
+//     "Here's the code for my project",
+//     "I've just relaunched my portfolio"
+// ]
 
-let myStats = [
-    "Junior Software Developer",
-    "Bachelor's Degree in Computer Science",
-    "Microsoft Office Excel Specialist",
-    "Critical Thinker"
-]
+//console.log(featuredPost[1])
+//console.log(featuredPost[2])
+//console.log(featuredPost[0])
+//console.log(featuredPosts.length) = 3
 
-let cards = [7, 4]
-cards.push(6) //the .push allows js to "push" items onto the array attached
-console.log cards // 7, 4, 6
+// let myStats = [
+//     "Junior Software Developer",
+//     "Bachelor's Degree in Computer Science",
+//     "Microsoft Office Excel Specialist",
+//     "Critical Thinker"
+// ]
 
-let messages = [
-    "Hey, how's it going?",
-    "I'm great, thank you! How about you?",
-    "All good. Been working on my portfolio lately."
-]
+// for (let i = 0; i <= myStats.length; i++) {
+//     console.log(myStats[i])
+// }
 
-let newMessage = "Same here!"
+// let sentence = ["Hello ", "my ", "name ", "is ", "Per"]
+// let greetingEl = document.getElementById("greeting-el")
 
-messages.push(newMessage)
+// Render the sentence in the greetingEl paragraph using a for loop and .textContent
 
-console.log(messages)
+// for (let i = 0; i < sentence.length; i++) {
+//     greetingEl.textContent += sentence[i]
+// }
 
-messages.pop()
+// let messages = [
+//     "Hey, how's it going?",
+//     "I'm great, thank you! How about you?",
+//     "All good. Been working on my portfolio lately."
+// ]
 
-console.log(messages)
+// let newMessage = "Same here!"
+
+// messages.push(newMessage)
+
+// console.log(messages)
+
+// messages.pop()
+
+// console.log(messages)
 
