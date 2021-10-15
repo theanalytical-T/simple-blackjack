@@ -2,9 +2,9 @@
 
 let firstCard = getRandomCard()
 let secondCard = getRandomCard()
-let sum = firstCard + secondCard
+let sum = 0
 let hasBlackJack = false
-let isAlive = true
+let isAlive = false
 let message = ""
 let messageEl = document.getElementById("message-el")
 let emojiEl = document.getElementById("emoji-el")
@@ -13,10 +13,25 @@ let cardsEl = document.querySelector("#cards-el")
 let cards = [firstCard, secondCard] //array - an ordered list of items
 
 function getRandomCard() {
-    return Math.random() * 21
+    let randomNumber = Math.floor(Math.random() * 13) + 1
+
+    if (randomNumber > 10) {
+        return 10
+    } else if (randomNumber === 1) {
+        return 11
+    } else {
+        return randomNumber
+    }
 }
 
 function startGame() {
+    isAlive = true
+    // Generate two random numbers
+    let firstCard = getRandomCard()
+    let secondCard = getRandomCard()
+    cards = [firstCard, secondCard]
+    // Re-assign the cards and sum variables so that the game can start
+    sum = firstCard + secondCard
     renderGame()
 }
 
