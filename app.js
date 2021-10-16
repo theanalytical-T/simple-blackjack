@@ -68,6 +68,31 @@ function newCard() {
     renderGame()
 }
 
+
+//Some examples of logical statements
+// let likesDocumentaries = true
+// let likesStartups = true
+
+// if (likesDocumentaries === true || likesStartups === true) {
+//     recommendMovie()
+// }
+
+
+// function recommendMovie() {
+//     console.log("Hey, check out this new film we think you will like!")
+// }
+
+// let hasSolvedChallenge = false
+// let hasHintsLeft = false
+
+// if (hasSolvedChallenge === false && hasHintsLeft === false) {
+//     showSolution()
+// }
+
+// function showSolution() {
+//     console.log("Showing the solution....")
+// }
+
 // let cards = [7, 4]
 // cards.push(6) //the .push allows js to "push" items onto the array attached
 // console.log cards // 7, 4, 6
