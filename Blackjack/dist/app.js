@@ -1,22 +1,66 @@
-let firstCard = 5
-let secondCard = 11
-let sum = firstCard + secondCard
+//cntrl+d to write repetitive code in multiple spots
+
+let firstCard = getRandomCard()
+let secondCard = getRandomCard()
+let sum = 0
 let hasBlackJack = false
-let isAlive = true
+let isAlive = false
 let message = ""
 let messageEl = document.getElementById("message-el")
 let emojiEl = document.getElementById("emoji-el")
 let sumEl = document.querySelector("#sum-el")
 let cardsEl = document.querySelector("#cards-el")
-// console.log(sum)
+let playerEl = document.getElementById("player-el")
+let cards = [firstCard, secondCard] //array - an ordered list of items
+
+let player = {
+    name: "Cindy",
+    chips: 200
+}
+
+playerEl.textContent = player.name + ": $" + player.chips
+
+//functions can be nested inside of objects, here's an example
+// let player = {
+//     name: "Robert",
+//     chips: 145,
+//     sayHello: function() {
+//         console.log("Heisann!") //This means howdy in Norwegian, lol cool!
+//     }
+// }
+
+// player.sayHello()
+
+function getRandomCard() {
+    let randomNumber = Math.floor(Math.random() * 13) + 1
+
+    if (randomNumber > 10) {
+        return 10
+    } else if (randomNumber === 1) {
+        return 11
+    } else {
+        return randomNumber
+    }
+}
 
 function startGame() {
+    isAlive = true
+    // Generate two random numbers
+    let firstCard = getRandomCard()
+    let secondCard = getRandomCard()
+    cards = [firstCard, secondCard]
+    // Re-assign the cards and sum variables so that the game can start
+    sum = firstCard + secondCard
     renderGame()
 }
 
 function renderGame() {
+    cardsEl.textContent = "Cards: "
+    for (let i = 0; i < cards.length; i++) {
+        cardsEl.textContent += cards[i] + " "
+    }
+
     sumEl.textContent = "Sum: " + sum
-    cardsEl.textContent = "Cards: " + firstCard + " " + secondCard
 
     if (sum <= 20) {
         message = "Do you want to draw a new card?"
@@ -37,12 +81,42 @@ function renderGame() {
 }
 
 function newCard() {
-    console.log("Drawing a new card from the deck!")
-    // cardsEl.textContent = "Cards: " + firstCard + " " + secondCard + " " + card
-    let card = 3
-    sum += card
-    renderGame()
+    if (isAlive === true && hasBlackJack === false) {
+        let card = getRandomCard()
+        sum += card
+        cards.push(card)
+        renderGame()
+    }
 }
+
+
+//Some examples of logical statements
+// let likesDocumentaries = true
+// let likesStartups = true
+
+// if (likesDocumentaries === true || likesStartups === true) {
+//     recommendMovie()
+// }
+
+
+// function recommendMovie() {
+//     console.log("Hey, check out this new film we think you will like!")
+// }
+
+// let hasSolvedChallenge = false
+// let hasHintsLeft = false
+
+// if (hasSolvedChallenge === false && hasHintsLeft === false) {
+//     showSolution()
+// }
+
+// function showSolution() {
+//     console.log("Showing the solution....")
+// }
+
+// let cards = [7, 4]
+// cards.push(6) //the .push allows js to "push" items onto the array attached
+// console.log cards // 7, 4, 6
 
 // let age = 22
 
@@ -62,3 +136,64 @@ function newCard() {
 //     console.log("Not eligible, you have already gotten one.")
 // }
 
+// let featuredPost = [
+//     "Check out my Netflix clone",
+//     "Here's the code for my project",
+//     "I've just relaunched my portfolio"
+// ]
+
+//console.log(featuredPost[1])
+//console.log(featuredPost[2])
+//console.log(featuredPost[0])
+//console.log(featuredPosts.length) = 3
+
+// let myStats = [
+//     "Junior Software Developer",
+//     "Bachelor's Degree in Computer Science",
+//     "Microsoft Office Excel Specialist",
+//     "Critical Thinker"
+// ]
+
+// for (let i = 0; i <= myStats.length; i++) {
+//     console.log(myStats[i])
+// }
+
+// let sentence = ["Hello ", "my ", "name ", "is ", "Per"]
+// let greetingEl = document.getElementById("greeting-el")
+
+// Render the sentence in the greetingEl paragraph using a for loop and .textContent
+
+// for (let i = 0; i < sentence.length; i++) {
+//     greetingEl.textContent += sentence[i]
+// }
+
+// let messages = [
+//     "Hey, how's it going?",
+//     "I'm great, thank you! How about you?",
+//     "All good. Been working on my portfolio lately."
+// ]
+
+// let newMessage = "Same here!"
+
+// messages.push(newMessage)
+
+// console.log(messages)
+
+// messages.pop()
+
+// console.log(messages)
+
+
+//a lesson on objects
+// let course = {
+//     title: "Learn CSS Grid for free",
+//     lessons: 16,
+//     creator: "Per Harald Borgen",
+//     length: 63,
+//     level: 2,
+//     isFree: true,
+//     tags: ["html", "css"]
+// }
+
+// console.log(course.length)
+// console.log(course.tags)
