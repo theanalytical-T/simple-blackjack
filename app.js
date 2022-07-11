@@ -10,7 +10,26 @@ let messageEl = document.getElementById("message-el")
 let emojiEl = document.getElementById("emoji-el")
 let sumEl = document.querySelector("#sum-el")
 let cardsEl = document.querySelector("#cards-el")
+let playerEl = document.getElementById("player-el")
 let cards = [firstCard, secondCard] //array - an ordered list of items
+
+let player = {
+    name: "Cindy",
+    chips: 200
+}
+
+playerEl.textContent = player.name + ": $" + player.chips
+
+//functions can be nested inside of objects, here's an example
+// let player = {
+//     name: "Robert",
+//     chips: 145,
+//     sayHello: function() {
+//         console.log("Heisann!") //This means howdy in Norwegian, lol cool!
+//     }
+// }
+
+// player.sayHello()
 
 function getRandomCard() {
     let randomNumber = Math.floor(Math.random() * 13) + 1
@@ -62,10 +81,12 @@ function renderGame() {
 }
 
 function newCard() {
-    let card = getRandomCard()
-    sum += card
-    cards.push(card)
-    renderGame()
+    if (isAlive === true && hasBlackJack === false) {
+        let card = getRandomCard()
+        sum += card
+        cards.push(card)
+        renderGame()
+    }
 }
 
 
@@ -162,3 +183,17 @@ function newCard() {
 
 // console.log(messages)
 
+
+//a lesson on objects
+// let course = {
+//     title: "Learn CSS Grid for free",
+//     lessons: 16,
+//     creator: "Per Harald Borgen",
+//     length: 63,
+//     level: 2,
+//     isFree: true,
+//     tags: ["html", "css"]
+// }
+
+// console.log(course.length)
+// console.log(course.tags)
